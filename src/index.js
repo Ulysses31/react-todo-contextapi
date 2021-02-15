@@ -1,17 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+import { debugContextDevtool } from 'react-context-devtool';
+import ReactDOM from 'react-dom';
+
+import './index.css';
+import App from './app';
+
+const container = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  container
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Attach root container
+const options = {
+  debugReducer: true,
+  debugContext: true,
+  disable: false,
+  disableAutoMode: false
+};
+debugContextDevtool(container, options);
